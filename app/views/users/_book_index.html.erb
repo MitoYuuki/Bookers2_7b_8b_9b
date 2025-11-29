@@ -1,0 +1,27 @@
+<h3>投稿数の前日比・前週比</h3>
+
+<div>
+  <p>今日の投稿数: <%= @today_book.count %> 件</p>
+  <p>前日の投稿数: <%= @yesterday_book.count %> 件</p>
+  <p>前日比: 
+    <% if @yesterday_book.count == 0 %>
+      前日の投稿が0のため計算できません
+    <% else %>
+      <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
+      <%= (@the_day_before * 100).round %>% 増加
+    <% end %>
+  </p>
+</div>
+
+<div>
+  <p>今週の投稿数: <%= @this_week_book.count %> 件</p>
+  <p>前週の投稿数: <%= @last_week_book.count %> 件</p>
+  <p>前週比: 
+    <% if @last_week_book.count == 0 %>
+      前週の投稿が0のため計算できません
+    <% else %>
+      <% @the_week_before = @this_week_book.count / @last_week_book.count.to_f %>
+      <%= (@the_week_before * 100).round %>% 増加
+    <% end %>
+  </p>
+</div>
